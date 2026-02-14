@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Mon Amour ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+/* BODY */
+body{
+    min-height:100vh;
+    background:
+        radial-gradient(circle at top, rgba(255,0,80,.4), transparent 60%),
+        linear-gradient(180deg, #000, #0a0a0a);
+    font-family:'Segoe UI', sans-serif;
+    color:white;
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/* VIDEO BACKGROUND */
+video{
+    position:fixed;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    opacity:.25;
+    z-index:-1;
+}
+
+/* CONTAINER */
+.container{
+    text-align:center;
+    max-width:480px;
+    padding:20px;
+}
+
+/* PHOTO */
+.photo{
+    width:130px;
+    height:130px;
+    border-radius:50%;
+    object-fit:cover;
+    border:4px solid #ff2e63;
+    box-shadow:0 0 20px rgba(255,46,99,.8);
+}
+
+/* HEART */
+.heart{
+    font-size:75px;
+    animation:beat 1.3s infinite;
+    color:#ff2e63;
+}
+@keyframes beat{
+    0%,50%,100%{transform:scale(1)}
+    25%,75%{transform:scale(1.15)}
+}
+
+/* DATE */
+.date{
+    margin-top:10px;
+    font-size:1.1rem;
+    color:#ffb6c1;
+    animation:pulse 2s infinite;
+}
+@keyframes pulse{
+    0%{opacity:.6}
+    50%{opacity:1}
+    100%{opacity:.6}
+}
+
+/* COUNTER */
+.counter{
+    margin-top:10px;
+    font-size:1rem;
+    opacity:.9;
+}
+
+/* BUTTONS */
+.buttons{
+    margin-top:20px;
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+button{
+    padding:14px 22px;
+    border:none;
+    border-radius:30px;
+    font-size:1rem;
+    cursor:pointer;
+}
+
+/*val*/
+.val{
+    margin-top:20px;
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    flex-wrap:wrap;
+    background:#ff2e63;
+    color:white;
+    box-shadow:0 0 15px rgba(255,46,99,.7);
+}
+
+.val{
+    padding:14px 22px;
+    border:none;
+    border-radius:30px;
+    font-size:1rem;
+    cursor:pointer;
+}
+
+.yes{
+    background:#ff2e63;
+    color:white;
+    box-shadow:0 0 15px rgba(255,46,99,.7);
+}
+
+.no{
+    background:#444;
+    color:white;
+    position:relative;
+}
+
+/* ANSWER */
+#answer{
+    margin-top:15px;
+    font-size:1.4rem;
+    color:#ffb6c1;
+    display:none;
+}
+
+/* FIREWORK */
+.firework{
+    position:absolute;
+    width:6px;
+    height:6px;
+    background:#ff2e63;
+    border-radius:50%;
+    animation:explode 1s forwards;
+}
+@keyframes explode{
+    to{
+        transform:translate(var(--x),var(--y)) scale(0);
+        opacity:0;
+    }
+}
+
+
+/* ROSES (REALISTIC CSS) */
+.rose{
+    position:absolute;
+    top:-60px;
+    width:20px;
+    height:20px;
+    background:radial-gradient(circle at 30% 30%, #ff4d6d, #7a001f);
+    border-radius:50%;
+    transform:rotate(45deg);
+    animation: fall linear infinite;
+    opacity:.85;
+}
+
+.rose::before,
+.rose::after{
+    content:"";
+    position:absolute;
+    width:20px;
+    height:20px;
+    background:inherit;
+    border-radius:50%;
+}
+
+.rose::before{
+    left:-10px;
+}
+
+.rose::after{
+    top:-10px;
+}
+
+@keyframes fall{
+    to{
+        transform:translateY(110vh) rotate(360deg);
+        opacity:0;
+    }
+}
+
+/* STARS */
+.star{
+    position:absolute;
+    width:2px;
+    height:2px;
+    background:white;
+    border-radius:50%;
+    animation: twinkle 2s infinite ease-in-out;
+}
+
+@keyframes twinkle{
+    0%,100%{opacity:.2;}
+    50%{opacity:1;}
+}
+
+
+/* MOBILE */
+@media(max-width:480px){
+    .heart{font-size:70px;}
+    h1{font-size:1.8rem;}
+    p{font-size:1rem;}
+}
+
+/*song pause*/
+.music-btn{
+    margin-top:15px;
+    padding:10px 18px;
+    border:none;
+    border-radius:25px;
+    background:#111;
+    color:#fff;
+    font-size:.9rem;
+    cursor:pointer;
+    box-shadow:0 0 10px rgba(255,46,99,.6);
+    transition:.3s;
+}
+
+.music-btn:hover{
+    background:#ff2e63;
+    box-shadow:0 0 20px rgba(255,46,99,.9);
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- 🎥 VIDEO ROMANTIQUE (optionnel) -->
+<video autoplay muted loop>
+    <source src="https://cdn.coverr.co/videos/coverr-romantic-sunset-9477/1080p.mp4" type="video/mp4">
+</video>
+
+<div class="container">
+
+    📸 <img src="asset/falone.jpeg" class="photo" alt="Mon amour">
+    <audio id="music" loop>
+        <source src="asset/John_Legend_-_All_of_me_.mpeg" type="audio/mpeg">
+    </audio>
+
+    <div class="heart">❤️</div>
+
+    <h1>Mon Amour</h1>
+
+    📆 <div class="date">Depuis le 4 Aout 2024 💖</div>
+
+    📍 <div class="counter" id="counter"></div>
+
+    <p style="margin-top:10px">
+        Depuis ce jour, chaque seconde avec toi
+        est un cadeau que je chéris 💕
+        Chaque battement de mon cœur
+        est un pas de plus vers toi 💖
+        Tu es mon aujourd’hui,
+        mon demain,
+        et mon pour toujours.
+    </p>
+    <p class="val"> Veut tu être ma Valentine?</p>
+    <div class="buttons">
+        <button class="yes" onclick="yesLove()">💖 Je dis OUI</button>
+        <button class="yes" onclick="yesLove()">💖 Je dis OUI encore</button>
+        <button class="no" id="no">😈 NON</button>
+    </div>
+
+    <div id="answer">💍 JE T’AIME POUR TOUJOURS 😘</div>
+
+    <button id="musicBtn" class="music-btn">⏸️ Pause musique</button>
+
+
+</div>
+
+<script>
+/* ⏱️ COUNTER */
+const startDate = new Date("2024-08-04T00:00:00");
+function updateCounter(){
+    const now = new Date();
+    const diff = now - startDate;
+
+    const days = Math.floor(diff / (1000*60*60*24));
+    const hours = Math.floor((diff / (1000*60*60)) % 24);
+    const minutes = Math.floor((diff / (1000*60)) % 60);
+
+    document.getElementById("counter").textContent =
+        `⏳ ${days} jours, ${hours} heures, ${minutes} minutes d’amour`;
+}
+setInterval(updateCounter,1000);
+updateCounter();
+
+/* 💖 YES + FIREWORK */
+function yesLove(){
+    document.getElementById("answer").style.display="block";
+    for(let i=0;i<30;i++){
+        const f=document.createElement("div");
+        f.className="firework";
+        f.style.left="50vw";
+        f.style.top="50vh";
+        f.style.setProperty("--x",(Math.random()*400-200)+"px");
+        f.style.setProperty("--y",(Math.random()*400-200)+"px");
+        document.body.appendChild(f);
+        setTimeout(()=>f.remove(),1000);
+    }
+}
+
+/* 😈 NO MOVES */
+const noBtn=document.getElementById("no");
+noBtn.addEventListener("mouseover",()=>{
+    noBtn.style.transform=
+        `translate(${Math.random()*200-100}px,${Math.random()*200-100}px)`;
+});
+
+
+/* ROSES */
+function createRose(){
+    const rose = document.createElement("div");
+    rose.className = "rose";
+    rose.style.left = Math.random() * 100 + "vw";
+    rose.style.animationDuration = (6 + Math.random()*6) + "s";
+    document.body.appendChild(rose);
+
+    setTimeout(()=>rose.remove(),12000);
+}
+setInterval(createRose, 400);
+
+/* STARS */
+for(let i=0;i<80;i++){
+    const star = document.createElement("div");
+    star.className = "star";
+    star.style.left = Math.random()*100 + "vw";
+    star.style.top = Math.random()*100 + "vh";
+    star.style.animationDelay = Math.random()*2 + "s";
+    document.body.appendChild(star);
+}
+
+
+/* MUSIC PLAY */
+document.body.addEventListener("click", () => {
+    document.getElementById("music").play();
+}, { once:true });
+
+/* MUSIC PAUSE */
+const music = document.getElementById("music");
+const musicBtn = document.getElementById("musicBtn");
+let isPlaying = false;
+
+musicBtn.addEventListener("click", (e) => {
+    e.stopPropagation(); // empêche le clic global
+    if(isPlaying){
+        music.pause();
+        musicBtn.textContent = "▶️ Jouer la musique";
+    }else{
+        music.play();
+        musicBtn.textContent = "⏸️ Pause musique";
+    }
+    isPlaying = !isPlaying;
+});
+
+</script>
+
+</body>
+</html>
